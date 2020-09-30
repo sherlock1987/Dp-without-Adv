@@ -1,0 +1,2208 @@
+GanAgent_VAE_State (
+  (lookupProb_): LookupProb(), parameters=0
+  (discriminator): WoZDiscriminator(
+    (gumbel_connector): GumbelConnector()
+    (state_rep): Linear(in_features=64, out_features=32, bias=True)
+    (action_rep): Linear(in_features=300, out_features=100, bias=True)
+    (model): Sequential(
+      (0): LeakyReLU(negative_slope=0.2, inplace=True)
+      (1): Dropout(p=0.3, inplace=False)
+      (2): Linear(in_features=132, out_features=32, bias=True)
+      (3): LeakyReLU(negative_slope=0.2, inplace=True)
+      (4): Dropout(p=0.3, inplace=False)
+      (5): Linear(in_features=32, out_features=32, bias=True)
+      (6): LeakyReLU(negative_slope=0.2, inplace=True)
+      (7): Dropout(p=0.3, inplace=False)
+      (8): Linear(in_features=32, out_features=1, bias=True)
+    )
+  ), parameters=37525
+  (generator): WoZGenerator_StateVae(
+    (gumbel_connector): GumbelConnector()
+    (last_layers): ModuleList(
+      (0): Linear(in_features=300, out_features=300, bias=True)
+    )
+    (state_model): Sequential(
+      (0): Linear(in_features=128, out_features=100, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Linear(in_features=100, out_features=64, bias=True)
+      (3): ReLU(inplace=True)
+      (4): Linear(in_features=64, out_features=64, bias=True)
+    )
+    (common_model): Sequential(
+      (0): Linear(in_features=128, out_features=128, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Linear(in_features=128, out_features=128, bias=True)
+      (3): ReLU(inplace=True)
+    )
+    (action_model_2): Sequential(
+      (0): Linear(in_features=128, out_features=96, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Linear(in_features=96, out_features=96, bias=True)
+      (3): ReLU(inplace=True)
+      (4): Linear(in_features=96, out_features=300, bias=True)
+    )
+  ), parameters=197644
+  (loss_BCE): BCELoss(), parameters=0
+  (vae): VAE(
+    (gumbel_connector): GumbelConnector()
+    (encode_model): Sequential(
+      (0): Linear(in_features=392, out_features=98, bias=True)
+      (1): ReLU(inplace=True)
+    )
+    (decode_model): Sequential(
+      (0): Linear(in_features=64, out_features=98, bias=True)
+      (1): ReLU(inplace=True)
+      (2): Linear(in_features=98, out_features=392, bias=True)
+    )
+    (fc21): Linear(in_features=98, out_features=64, bias=True)
+    (fc22): Linear(in_features=98, out_features=64, bias=True)
+  ), parameters=96364
+) Total Parameters=331533
+val disc_loss 0.693
+Total valid loss 0.693441845354
+Human-generated: 7320.0, Successful Predictions: 7320.0, Acc: 1.00
+Machine-generated: 7320.0, Successful Predictions: 0.0, Acc: 0.00
+Total: 14640.0, Successful Predictions: 7320.0, Acc: 0.50
+D(x) on Human generated: 0.51
+D(G(z)) on Machine generated: 0.51
+val gen_loss 0.677 mean_dist -0.000
+Total valid loss 0.677254942656
+**** VAE Training Begins ****
+**** Epoch 0/400 ****
+
+@@@@@@@@@@ AutoEncoder Epoch: 0 % 400 @@@@@@@@@@@@
+Train vae_loss 0.700
+val vae_loss 0.694
+Total valid loss 0.694319722594
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 1 % 400 @@@@@@@@@@@@
+Train vae_loss 0.122
+val vae_loss 0.088
+Total valid loss 0.0879320810076
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 2 % 400 @@@@@@@@@@@@
+Train vae_loss 0.076
+val vae_loss 0.073
+Total valid loss 0.0728295153831
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 3 % 400 @@@@@@@@@@@@
+Train vae_loss 0.067
+val vae_loss 0.067
+Total valid loss 0.0668372766222
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 4 % 400 @@@@@@@@@@@@
+Train vae_loss 0.063
+val vae_loss 0.063
+Total valid loss 0.0628562896345
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 5 % 400 @@@@@@@@@@@@
+Train vae_loss 0.059
+val vae_loss 0.059
+Total valid loss 0.0585718359493
+Update patience to 10
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 6 % 400 @@@@@@@@@@@@
+Train vae_loss 0.055
+val vae_loss 0.055
+Total valid loss 0.0553791758711
+Update patience to 12.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 7 % 400 @@@@@@@@@@@@
+Train vae_loss 0.053
+val vae_loss 0.054
+Total valid loss 0.0536063642043
+Update patience to 14.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 8 % 400 @@@@@@@@@@@@
+Train vae_loss 0.051
+val vae_loss 0.052
+Total valid loss 0.0524407221829
+Update patience to 16.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 9 % 400 @@@@@@@@@@@@
+Train vae_loss 0.050
+val vae_loss 0.051
+Total valid loss 0.0514916076523
+Update patience to 18.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 10 % 400 @@@@@@@@@@@@
+Train vae_loss 0.049
+val vae_loss 0.050
+Total valid loss 0.0503539372174
+Update patience to 20.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 11 % 400 @@@@@@@@@@@@
+Train vae_loss 0.048
+val vae_loss 0.050
+Total valid loss 0.04967828953
+Update patience to 22.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 12 % 400 @@@@@@@@@@@@
+Train vae_loss 0.048
+val vae_loss 0.049
+Total valid loss 0.0490737662147
+Update patience to 24.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 13 % 400 @@@@@@@@@@@@
+Train vae_loss 0.047
+val vae_loss 0.048
+Total valid loss 0.0484827579778
+Update patience to 26.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 14 % 400 @@@@@@@@@@@@
+Train vae_loss 0.047
+val vae_loss 0.049
+Total valid loss 0.0485512826775
+
+@@@@@@@@@@ AutoEncoder Epoch: 15 % 400 @@@@@@@@@@@@
+Train vae_loss 0.046
+val vae_loss 0.048
+Total valid loss 0.0479981447036
+Update patience to 30.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 16 % 400 @@@@@@@@@@@@
+Train vae_loss 0.046
+val vae_loss 0.048
+Total valid loss 0.0477885915363
+Update patience to 32.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 17 % 400 @@@@@@@@@@@@
+Train vae_loss 0.046
+val vae_loss 0.047
+Total valid loss 0.0473999218008
+Update patience to 34.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 18 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.0472810153895
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 19 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.0470817239925
+Update patience to 38.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 20 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.0468778773898
+Update patience to 40.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 21 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.046729988159
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 22 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.0465096731472
+Update patience to 44.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 23 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.047
+Total valid loss 0.0466321282944
+
+@@@@@@@@@@ AutoEncoder Epoch: 24 % 400 @@@@@@@@@@@@
+Train vae_loss 0.045
+val vae_loss 0.046
+Total valid loss 0.0463204264152
+Update patience to 48.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 25 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0462519454419
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 26 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0460903621966
+Update patience to 52.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 27 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0461471915611
+
+@@@@@@@@@@ AutoEncoder Epoch: 28 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0457230644209
+Update patience to 56.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 29 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0455893030787
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 30 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0457253728795
+
+@@@@@@@@@@ AutoEncoder Epoch: 31 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0457085930727
+
+@@@@@@@@@@ AutoEncoder Epoch: 32 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.04552779078
+Update patience to 64.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 33 % 400 @@@@@@@@@@@@
+Train vae_loss 0.044
+val vae_loss 0.046
+Total valid loss 0.0455125739462
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 34 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0454278608448
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 35 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0453210275193
+Update patience to 70.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 36 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0454409427513
+
+@@@@@@@@@@ AutoEncoder Epoch: 37 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0452086985966
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 38 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0451419033171
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 39 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0450488764671
+Update patience to 78.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 40 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0450813694872
+
+@@@@@@@@@@ AutoEncoder Epoch: 41 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0449411487359
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 42 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0448293655683
+Update patience to 84.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 43 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0448999042455
+
+@@@@@@@@@@ AutoEncoder Epoch: 44 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0449245188874
+
+@@@@@@@@@@ AutoEncoder Epoch: 45 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0448643619531
+
+@@@@@@@@@@ AutoEncoder Epoch: 46 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0448532407401
+
+@@@@@@@@@@ AutoEncoder Epoch: 47 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0447268390753
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 48 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.045
+Total valid loss 0.0447492991559
+
+@@@@@@@@@@ AutoEncoder Epoch: 49 % 400 @@@@@@@@@@@@
+Train vae_loss 0.043
+val vae_loss 0.044
+Total valid loss 0.0442751131219
+Update patience to 98.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 50 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0444855997492
+
+@@@@@@@@@@ AutoEncoder Epoch: 51 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0444578378171
+
+@@@@@@@@@@ AutoEncoder Epoch: 52 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0443130896167
+
+@@@@@@@@@@ AutoEncoder Epoch: 53 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0442331387493
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 54 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0442536428388
+
+@@@@@@@@@@ AutoEncoder Epoch: 55 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0443572414825
+
+@@@@@@@@@@ AutoEncoder Epoch: 56 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.044202033125
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 57 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0441838521816
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 58 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0441592015692
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 59 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0441325639115
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 60 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0442180143761
+
+@@@@@@@@@@ AutoEncoder Epoch: 61 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439935854224
+Update patience to 122.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 62 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0440969251279
+
+@@@@@@@@@@ AutoEncoder Epoch: 63 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0441746341339
+
+@@@@@@@@@@ AutoEncoder Epoch: 64 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439757922451
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 65 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0440483763509
+
+@@@@@@@@@@ AutoEncoder Epoch: 66 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0440751422563
+
+@@@@@@@@@@ AutoEncoder Epoch: 67 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0442578862498
+
+@@@@@@@@@@ AutoEncoder Epoch: 68 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0442432406374
+
+@@@@@@@@@@ AutoEncoder Epoch: 69 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0438563556517
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 70 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439209154517
+
+@@@@@@@@@@ AutoEncoder Epoch: 71 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439256158825
+
+@@@@@@@@@@ AutoEncoder Epoch: 72 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0438468468788
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 73 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0436752735042
+Update patience to 146.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 74 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439155175061
+
+@@@@@@@@@@ AutoEncoder Epoch: 75 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0439291952758
+
+@@@@@@@@@@ AutoEncoder Epoch: 76 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0438522792986
+
+@@@@@@@@@@ AutoEncoder Epoch: 77 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0438032927999
+
+@@@@@@@@@@ AutoEncoder Epoch: 78 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0437536056413
+
+@@@@@@@@@@ AutoEncoder Epoch: 79 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0436487090698
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 80 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0438090347548
+
+@@@@@@@@@@ AutoEncoder Epoch: 81 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0437954059023
+
+@@@@@@@@@@ AutoEncoder Epoch: 82 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.043734957235
+
+@@@@@@@@@@ AutoEncoder Epoch: 83 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0436546833056
+
+@@@@@@@@@@ AutoEncoder Epoch: 84 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0437696772765
+
+@@@@@@@@@@ AutoEncoder Epoch: 85 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0435239171731
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 86 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0435076202953
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 87 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0435781231242
+
+@@@@@@@@@@ AutoEncoder Epoch: 88 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0436058003211
+
+@@@@@@@@@@ AutoEncoder Epoch: 89 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435015790042
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 90 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.0436584456045
+
+@@@@@@@@@@ AutoEncoder Epoch: 91 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.043
+Total valid loss 0.0434986939196
+Update patience to 182.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 92 % 400 @@@@@@@@@@@@
+Train vae_loss 0.042
+val vae_loss 0.044
+Total valid loss 0.043881903143
+
+@@@@@@@@@@ AutoEncoder Epoch: 93 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0436018267494
+
+@@@@@@@@@@ AutoEncoder Epoch: 94 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433666672497
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 95 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435431817333
+
+@@@@@@@@@@ AutoEncoder Epoch: 96 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434263761415
+
+@@@@@@@@@@ AutoEncoder Epoch: 97 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433849613259
+
+@@@@@@@@@@ AutoEncoder Epoch: 98 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434538375769
+
+@@@@@@@@@@ AutoEncoder Epoch: 99 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434204213565
+
+@@@@@@@@@@ AutoEncoder Epoch: 100 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432278658034
+Update patience to 200.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 101 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433588625222
+
+@@@@@@@@@@ AutoEncoder Epoch: 102 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434659266325
+
+@@@@@@@@@@ AutoEncoder Epoch: 103 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435209382081
+
+@@@@@@@@@@ AutoEncoder Epoch: 104 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434933755791
+
+@@@@@@@@@@ AutoEncoder Epoch: 105 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434970073402
+
+@@@@@@@@@@ AutoEncoder Epoch: 106 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433062138494
+
+@@@@@@@@@@ AutoEncoder Epoch: 107 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435362070738
+
+@@@@@@@@@@ AutoEncoder Epoch: 108 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.043518046253
+
+@@@@@@@@@@ AutoEncoder Epoch: 109 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433675462197
+
+@@@@@@@@@@ AutoEncoder Epoch: 110 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433588056657
+
+@@@@@@@@@@ AutoEncoder Epoch: 111 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433996787875
+
+@@@@@@@@@@ AutoEncoder Epoch: 112 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435389907817
+
+@@@@@@@@@@ AutoEncoder Epoch: 113 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432716850191
+
+@@@@@@@@@@ AutoEncoder Epoch: 114 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431384274156
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 115 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0434407883125
+
+@@@@@@@@@@ AutoEncoder Epoch: 116 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433010478489
+
+@@@@@@@@@@ AutoEncoder Epoch: 117 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.044
+Total valid loss 0.0435503263515
+
+@@@@@@@@@@ AutoEncoder Epoch: 118 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432509657484
+
+@@@@@@@@@@ AutoEncoder Epoch: 119 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432955779929
+
+@@@@@@@@@@ AutoEncoder Epoch: 120 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433680327212
+
+@@@@@@@@@@ AutoEncoder Epoch: 121 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431621357738
+
+@@@@@@@@@@ AutoEncoder Epoch: 122 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433337481723
+
+@@@@@@@@@@ AutoEncoder Epoch: 123 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431464083615
+
+@@@@@@@@@@ AutoEncoder Epoch: 124 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432775491299
+
+@@@@@@@@@@ AutoEncoder Epoch: 125 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432032288709
+
+@@@@@@@@@@ AutoEncoder Epoch: 126 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0433707186708
+
+@@@@@@@@@@ AutoEncoder Epoch: 127 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429685783008
+Update patience to 254.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 128 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432343123267
+
+@@@@@@@@@@ AutoEncoder Epoch: 129 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431171928029
+
+@@@@@@@@@@ AutoEncoder Epoch: 130 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432205908306
+
+@@@@@@@@@@ AutoEncoder Epoch: 131 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429933739857
+
+@@@@@@@@@@ AutoEncoder Epoch: 132 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0432395850476
+
+@@@@@@@@@@ AutoEncoder Epoch: 133 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431192505372
+
+@@@@@@@@@@ AutoEncoder Epoch: 134 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430373224873
+
+@@@@@@@@@@ AutoEncoder Epoch: 135 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430918348434
+
+@@@@@@@@@@ AutoEncoder Epoch: 136 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431130487075
+
+@@@@@@@@@@ AutoEncoder Epoch: 137 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431913394542
+
+@@@@@@@@@@ AutoEncoder Epoch: 138 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.043075204262
+
+@@@@@@@@@@ AutoEncoder Epoch: 139 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429917831035
+
+@@@@@@@@@@ AutoEncoder Epoch: 140 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430968123198
+
+@@@@@@@@@@ AutoEncoder Epoch: 141 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430245558563
+
+@@@@@@@@@@ AutoEncoder Epoch: 142 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429235243345
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 143 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0431479942664
+
+@@@@@@@@@@ AutoEncoder Epoch: 144 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429622770028
+
+@@@@@@@@@@ AutoEncoder Epoch: 145 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430043229803
+
+@@@@@@@@@@ AutoEncoder Epoch: 146 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429320524706
+
+@@@@@@@@@@ AutoEncoder Epoch: 147 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428782717981
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 148 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428999213227
+
+@@@@@@@@@@ AutoEncoder Epoch: 149 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430369141099
+
+@@@@@@@@@@ AutoEncoder Epoch: 150 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427363836741
+Update patience to 300.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 151 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428288582499
+
+@@@@@@@@@@ AutoEncoder Epoch: 152 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429781251816
+
+@@@@@@@@@@ AutoEncoder Epoch: 153 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430700211618
+
+@@@@@@@@@@ AutoEncoder Epoch: 154 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428468058588
+
+@@@@@@@@@@ AutoEncoder Epoch: 155 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428303985047
+
+@@@@@@@@@@ AutoEncoder Epoch: 156 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429558444951
+
+@@@@@@@@@@ AutoEncoder Epoch: 157 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.043033434246
+
+@@@@@@@@@@ AutoEncoder Epoch: 158 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430443267659
+
+@@@@@@@@@@ AutoEncoder Epoch: 159 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430004991683
+
+@@@@@@@@@@ AutoEncoder Epoch: 160 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428818852992
+
+@@@@@@@@@@ AutoEncoder Epoch: 161 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.042906022707
+
+@@@@@@@@@@ AutoEncoder Epoch: 162 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428695907114
+
+@@@@@@@@@@ AutoEncoder Epoch: 163 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428816761944
+
+@@@@@@@@@@ AutoEncoder Epoch: 164 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428830123216
+
+@@@@@@@@@@ AutoEncoder Epoch: 165 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428721690092
+
+@@@@@@@@@@ AutoEncoder Epoch: 166 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428573576214
+
+@@@@@@@@@@ AutoEncoder Epoch: 167 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427747237206
+
+@@@@@@@@@@ AutoEncoder Epoch: 168 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428677539143
+
+@@@@@@@@@@ AutoEncoder Epoch: 169 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427044308515
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 170 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428265471195
+
+@@@@@@@@@@ AutoEncoder Epoch: 171 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.042878375862
+
+@@@@@@@@@@ AutoEncoder Epoch: 172 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427051074192
+
+@@@@@@@@@@ AutoEncoder Epoch: 173 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428128226767
+
+@@@@@@@@@@ AutoEncoder Epoch: 174 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426078091269
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 175 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427278332779
+
+@@@@@@@@@@ AutoEncoder Epoch: 176 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428635306412
+
+@@@@@@@@@@ AutoEncoder Epoch: 177 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.042863269932
+
+@@@@@@@@@@ AutoEncoder Epoch: 178 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426872810196
+
+@@@@@@@@@@ AutoEncoder Epoch: 179 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428157258229
+
+@@@@@@@@@@ AutoEncoder Epoch: 180 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0430908698405
+
+@@@@@@@@@@ AutoEncoder Epoch: 181 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428081047034
+
+@@@@@@@@@@ AutoEncoder Epoch: 182 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426674339249
+
+@@@@@@@@@@ AutoEncoder Epoch: 183 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428033993259
+
+@@@@@@@@@@ AutoEncoder Epoch: 184 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426919881987
+
+@@@@@@@@@@ AutoEncoder Epoch: 185 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.042688933308
+
+@@@@@@@@@@ AutoEncoder Epoch: 186 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426817123519
+
+@@@@@@@@@@ AutoEncoder Epoch: 187 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428614850293
+
+@@@@@@@@@@ AutoEncoder Epoch: 188 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0428187397354
+
+@@@@@@@@@@ AutoEncoder Epoch: 189 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0429109496782
+
+@@@@@@@@@@ AutoEncoder Epoch: 190 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426796866489
+
+@@@@@@@@@@ AutoEncoder Epoch: 191 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426260904088
+
+@@@@@@@@@@ AutoEncoder Epoch: 192 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427434948258
+
+@@@@@@@@@@ AutoEncoder Epoch: 193 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427363446196
+
+@@@@@@@@@@ AutoEncoder Epoch: 194 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426145516886
+
+@@@@@@@@@@ AutoEncoder Epoch: 195 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427336759682
+
+@@@@@@@@@@ AutoEncoder Epoch: 196 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427066092608
+
+@@@@@@@@@@ AutoEncoder Epoch: 197 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426049532186
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 198 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427410469131
+
+@@@@@@@@@@ AutoEncoder Epoch: 199 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0425943907839
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 200 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0426259910932
+
+@@@@@@@@@@ AutoEncoder Epoch: 201 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0425255592363
+Update patience to 402.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 202 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.042614629309
+
+@@@@@@@@@@ AutoEncoder Epoch: 203 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427162591979
+
+@@@@@@@@@@ AutoEncoder Epoch: 204 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.042
+Total valid loss 0.0423026981107
+Update patience to 408.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 205 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425797133691
+
+@@@@@@@@@@ AutoEncoder Epoch: 206 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427326565211
+
+@@@@@@@@@@ AutoEncoder Epoch: 207 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0425920182778
+
+@@@@@@@@@@ AutoEncoder Epoch: 208 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0427890985166
+
+@@@@@@@@@@ AutoEncoder Epoch: 209 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425486454404
+
+@@@@@@@@@@ AutoEncoder Epoch: 210 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.042
+Total valid loss 0.0424267342467
+
+@@@@@@@@@@ AutoEncoder Epoch: 211 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423986834825
+
+@@@@@@@@@@ AutoEncoder Epoch: 212 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0428024182921
+
+@@@@@@@@@@ AutoEncoder Epoch: 213 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042447235252
+
+@@@@@@@@@@ AutoEncoder Epoch: 214 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0427050241804
+
+@@@@@@@@@@ AutoEncoder Epoch: 215 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424617508457
+
+@@@@@@@@@@ AutoEncoder Epoch: 216 % 400 @@@@@@@@@@@@
+Train vae_loss 0.041
+val vae_loss 0.043
+Total valid loss 0.0425171313166
+
+@@@@@@@@@@ AutoEncoder Epoch: 217 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424645747073
+
+@@@@@@@@@@ AutoEncoder Epoch: 218 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425907380451
+
+@@@@@@@@@@ AutoEncoder Epoch: 219 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425366029815
+
+@@@@@@@@@@ AutoEncoder Epoch: 220 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423691193955
+
+@@@@@@@@@@ AutoEncoder Epoch: 221 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424937471045
+
+@@@@@@@@@@ AutoEncoder Epoch: 222 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424451395014
+
+@@@@@@@@@@ AutoEncoder Epoch: 223 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425694000403
+
+@@@@@@@@@@ AutoEncoder Epoch: 224 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423894957716
+
+@@@@@@@@@@ AutoEncoder Epoch: 225 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042439878903
+
+@@@@@@@@@@ AutoEncoder Epoch: 226 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424605215915
+
+@@@@@@@@@@ AutoEncoder Epoch: 227 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424755506034
+
+@@@@@@@@@@ AutoEncoder Epoch: 228 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424572031212
+
+@@@@@@@@@@ AutoEncoder Epoch: 229 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424081897516
+
+@@@@@@@@@@ AutoEncoder Epoch: 230 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0428693075588
+
+@@@@@@@@@@ AutoEncoder Epoch: 231 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425453841014
+
+@@@@@@@@@@ AutoEncoder Epoch: 232 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425050014966
+
+@@@@@@@@@@ AutoEncoder Epoch: 233 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425446867699
+
+@@@@@@@@@@ AutoEncoder Epoch: 234 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0426348325964
+
+@@@@@@@@@@ AutoEncoder Epoch: 235 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424046841923
+
+@@@@@@@@@@ AutoEncoder Epoch: 236 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424067498047
+
+@@@@@@@@@@ AutoEncoder Epoch: 237 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424021538652
+
+@@@@@@@@@@ AutoEncoder Epoch: 238 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422862220372
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 239 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0426661200272
+
+@@@@@@@@@@ AutoEncoder Epoch: 240 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423611540073
+
+@@@@@@@@@@ AutoEncoder Epoch: 241 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424961677951
+
+@@@@@@@@@@ AutoEncoder Epoch: 242 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042299454192
+
+@@@@@@@@@@ AutoEncoder Epoch: 243 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421178051591
+Update patience to 486.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 244 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423109034901
+
+@@@@@@@@@@ AutoEncoder Epoch: 245 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423901628581
+
+@@@@@@@@@@ AutoEncoder Epoch: 246 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424033173467
+
+@@@@@@@@@@ AutoEncoder Epoch: 247 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424069609249
+
+@@@@@@@@@@ AutoEncoder Epoch: 248 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424104218722
+
+@@@@@@@@@@ AutoEncoder Epoch: 249 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.042541449004
+
+@@@@@@@@@@ AutoEncoder Epoch: 250 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042243583479
+
+@@@@@@@@@@ AutoEncoder Epoch: 251 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423487399048
+
+@@@@@@@@@@ AutoEncoder Epoch: 252 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424634408603
+
+@@@@@@@@@@ AutoEncoder Epoch: 253 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424658297943
+
+@@@@@@@@@@ AutoEncoder Epoch: 254 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423766659176
+
+@@@@@@@@@@ AutoEncoder Epoch: 255 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423348630305
+
+@@@@@@@@@@ AutoEncoder Epoch: 256 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423829557038
+
+@@@@@@@@@@ AutoEncoder Epoch: 257 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424375521538
+
+@@@@@@@@@@ AutoEncoder Epoch: 258 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0426145151074
+
+@@@@@@@@@@ AutoEncoder Epoch: 259 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423202109752
+
+@@@@@@@@@@ AutoEncoder Epoch: 260 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424136266143
+
+@@@@@@@@@@ AutoEncoder Epoch: 261 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423206231084
+
+@@@@@@@@@@ AutoEncoder Epoch: 262 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042425494183
+
+@@@@@@@@@@ AutoEncoder Epoch: 263 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422106224921
+
+@@@@@@@@@@ AutoEncoder Epoch: 264 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423588176853
+
+@@@@@@@@@@ AutoEncoder Epoch: 265 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424081953395
+
+@@@@@@@@@@ AutoEncoder Epoch: 266 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422210937335
+
+@@@@@@@@@@ AutoEncoder Epoch: 267 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423888059364
+
+@@@@@@@@@@ AutoEncoder Epoch: 268 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422230829775
+
+@@@@@@@@@@ AutoEncoder Epoch: 269 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042264557581
+
+@@@@@@@@@@ AutoEncoder Epoch: 270 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424911980441
+
+@@@@@@@@@@ AutoEncoder Epoch: 271 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421838256546
+
+@@@@@@@@@@ AutoEncoder Epoch: 272 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421078058387
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 273 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422698414778
+
+@@@@@@@@@@ AutoEncoder Epoch: 274 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422646093991
+
+@@@@@@@@@@ AutoEncoder Epoch: 275 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423378683016
+
+@@@@@@@@@@ AutoEncoder Epoch: 276 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422015287226
+
+@@@@@@@@@@ AutoEncoder Epoch: 277 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424340305789
+
+@@@@@@@@@@ AutoEncoder Epoch: 278 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420314428687
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 279 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422855122168
+
+@@@@@@@@@@ AutoEncoder Epoch: 280 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423758521707
+
+@@@@@@@@@@ AutoEncoder Epoch: 281 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421578008987
+
+@@@@@@@@@@ AutoEncoder Epoch: 282 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042447306857
+
+@@@@@@@@@@ AutoEncoder Epoch: 283 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421567513745
+
+@@@@@@@@@@ AutoEncoder Epoch: 284 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423679323714
+
+@@@@@@@@@@ AutoEncoder Epoch: 285 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423792958199
+
+@@@@@@@@@@ AutoEncoder Epoch: 286 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422926302083
+
+@@@@@@@@@@ AutoEncoder Epoch: 287 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423030163787
+
+@@@@@@@@@@ AutoEncoder Epoch: 288 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421875213563
+
+@@@@@@@@@@ AutoEncoder Epoch: 289 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421261580081
+
+@@@@@@@@@@ AutoEncoder Epoch: 290 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423743578254
+
+@@@@@@@@@@ AutoEncoder Epoch: 291 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418801296075
+Update patience to 582.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 292 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422007134032
+
+@@@@@@@@@@ AutoEncoder Epoch: 293 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424176466758
+
+@@@@@@@@@@ AutoEncoder Epoch: 294 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423610558978
+
+@@@@@@@@@@ AutoEncoder Epoch: 295 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421247140611
+
+@@@@@@@@@@ AutoEncoder Epoch: 296 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422902055787
+
+@@@@@@@@@@ AutoEncoder Epoch: 297 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423644392705
+
+@@@@@@@@@@ AutoEncoder Epoch: 298 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424228140504
+
+@@@@@@@@@@ AutoEncoder Epoch: 299 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423511994667
+
+@@@@@@@@@@ AutoEncoder Epoch: 300 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422116855129
+
+@@@@@@@@@@ AutoEncoder Epoch: 301 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420178001227
+
+@@@@@@@@@@ AutoEncoder Epoch: 302 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421586822963
+
+@@@@@@@@@@ AutoEncoder Epoch: 303 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421358838097
+
+@@@@@@@@@@ AutoEncoder Epoch: 304 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420367724155
+
+@@@@@@@@@@ AutoEncoder Epoch: 305 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422528016335
+
+@@@@@@@@@@ AutoEncoder Epoch: 306 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422183699356
+
+@@@@@@@@@@ AutoEncoder Epoch: 307 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421121010221
+
+@@@@@@@@@@ AutoEncoder Epoch: 308 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422471333906
+
+@@@@@@@@@@ AutoEncoder Epoch: 309 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0424772489083
+
+@@@@@@@@@@ AutoEncoder Epoch: 310 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421180188289
+
+@@@@@@@@@@ AutoEncoder Epoch: 311 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422305345963
+
+@@@@@@@@@@ AutoEncoder Epoch: 312 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421503402262
+
+@@@@@@@@@@ AutoEncoder Epoch: 313 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423551792676
+
+@@@@@@@@@@ AutoEncoder Epoch: 314 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420049200842
+
+@@@@@@@@@@ AutoEncoder Epoch: 315 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421853322291
+
+@@@@@@@@@@ AutoEncoder Epoch: 316 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420325315695
+
+@@@@@@@@@@ AutoEncoder Epoch: 317 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422370915958
+
+@@@@@@@@@@ AutoEncoder Epoch: 318 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.043
+Total valid loss 0.0425152024407
+
+@@@@@@@@@@ AutoEncoder Epoch: 319 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421980599735
+
+@@@@@@@@@@ AutoEncoder Epoch: 320 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421024057098
+
+@@@@@@@@@@ AutoEncoder Epoch: 321 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423727260261
+
+@@@@@@@@@@ AutoEncoder Epoch: 322 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420023833142
+
+@@@@@@@@@@ AutoEncoder Epoch: 323 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420862722104
+
+@@@@@@@@@@ AutoEncoder Epoch: 324 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420478255351
+
+@@@@@@@@@@ AutoEncoder Epoch: 325 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421519520097
+
+@@@@@@@@@@ AutoEncoder Epoch: 326 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423772361313
+
+@@@@@@@@@@ AutoEncoder Epoch: 327 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420579826307
+
+@@@@@@@@@@ AutoEncoder Epoch: 328 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420566677864
+
+@@@@@@@@@@ AutoEncoder Epoch: 329 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.042193564968
+
+@@@@@@@@@@ AutoEncoder Epoch: 330 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419945083253
+
+@@@@@@@@@@ AutoEncoder Epoch: 331 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421968474373
+
+@@@@@@@@@@ AutoEncoder Epoch: 332 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422281079361
+
+@@@@@@@@@@ AutoEncoder Epoch: 333 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419860193659
+
+@@@@@@@@@@ AutoEncoder Epoch: 334 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420486598779
+
+@@@@@@@@@@ AutoEncoder Epoch: 335 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421880874019
+
+@@@@@@@@@@ AutoEncoder Epoch: 336 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422127870385
+
+@@@@@@@@@@ AutoEncoder Epoch: 337 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421624692676
+
+@@@@@@@@@@ AutoEncoder Epoch: 338 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422346527826
+
+@@@@@@@@@@ AutoEncoder Epoch: 339 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420309111598
+
+@@@@@@@@@@ AutoEncoder Epoch: 340 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421456783613
+
+@@@@@@@@@@ AutoEncoder Epoch: 341 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422236978489
+
+@@@@@@@@@@ AutoEncoder Epoch: 342 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419569329404
+
+@@@@@@@@@@ AutoEncoder Epoch: 343 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420305758837
+
+@@@@@@@@@@ AutoEncoder Epoch: 344 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422795752033
+
+@@@@@@@@@@ AutoEncoder Epoch: 345 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421669084396
+
+@@@@@@@@@@ AutoEncoder Epoch: 346 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421198103882
+
+@@@@@@@@@@ AutoEncoder Epoch: 347 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419308175867
+
+@@@@@@@@@@ AutoEncoder Epoch: 348 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419646030842
+
+@@@@@@@@@@ AutoEncoder Epoch: 349 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420589652523
+
+@@@@@@@@@@ AutoEncoder Epoch: 350 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420121131159
+
+@@@@@@@@@@ AutoEncoder Epoch: 351 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418834849642
+
+@@@@@@@@@@ AutoEncoder Epoch: 352 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419642589834
+
+@@@@@@@@@@ AutoEncoder Epoch: 353 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.041967682174
+
+@@@@@@@@@@ AutoEncoder Epoch: 354 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419938571018
+
+@@@@@@@@@@ AutoEncoder Epoch: 355 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423165448926
+
+@@@@@@@@@@ AutoEncoder Epoch: 356 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.041911073884
+
+@@@@@@@@@@ AutoEncoder Epoch: 357 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419227422872
+
+@@@@@@@@@@ AutoEncoder Epoch: 358 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419018084153
+
+@@@@@@@@@@ AutoEncoder Epoch: 359 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0423371509389
+
+@@@@@@@@@@ AutoEncoder Epoch: 360 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419543192523
+
+@@@@@@@@@@ AutoEncoder Epoch: 361 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422229278436
+
+@@@@@@@@@@ AutoEncoder Epoch: 362 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420115746436
+
+@@@@@@@@@@ AutoEncoder Epoch: 363 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420146128926
+
+@@@@@@@@@@ AutoEncoder Epoch: 364 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420126494203
+
+@@@@@@@@@@ AutoEncoder Epoch: 365 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420172688414
+
+@@@@@@@@@@ AutoEncoder Epoch: 366 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419516999458
+
+@@@@@@@@@@ AutoEncoder Epoch: 367 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0421291009263
+
+@@@@@@@@@@ AutoEncoder Epoch: 368 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.041994238883
+
+@@@@@@@@@@ AutoEncoder Epoch: 369 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419677237934
+
+@@@@@@@@@@ AutoEncoder Epoch: 370 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0422020549046
+
+@@@@@@@@@@ AutoEncoder Epoch: 371 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420140910161
+
+@@@@@@@@@@ AutoEncoder Epoch: 372 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0417750772303
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 373 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420296306218
+
+@@@@@@@@@@ AutoEncoder Epoch: 374 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420734999304
+
+@@@@@@@@@@ AutoEncoder Epoch: 375 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.041954256182
+
+@@@@@@@@@@ AutoEncoder Epoch: 376 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419845581207
+
+@@@@@@@@@@ AutoEncoder Epoch: 377 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419966968112
+
+@@@@@@@@@@ AutoEncoder Epoch: 378 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420698638792
+
+@@@@@@@@@@ AutoEncoder Epoch: 379 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419663747803
+
+@@@@@@@@@@ AutoEncoder Epoch: 380 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420908240571
+
+@@@@@@@@@@ AutoEncoder Epoch: 381 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419753656463
+
+@@@@@@@@@@ AutoEncoder Epoch: 382 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419235737597
+
+@@@@@@@@@@ AutoEncoder Epoch: 383 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418860520557
+
+@@@@@@@@@@ AutoEncoder Epoch: 384 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0416871151872
+Update patience to 768.0
+Model Saved.
+
+@@@@@@@@@@ AutoEncoder Epoch: 385 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418993767778
+
+@@@@@@@@@@ AutoEncoder Epoch: 386 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418778760969
+
+@@@@@@@@@@ AutoEncoder Epoch: 387 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419380669406
+
+@@@@@@@@@@ AutoEncoder Epoch: 388 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0417869721585
+
+@@@@@@@@@@ AutoEncoder Epoch: 389 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419797413662
+
+@@@@@@@@@@ AutoEncoder Epoch: 390 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419011778336
+
+@@@@@@@@@@ AutoEncoder Epoch: 391 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419870552103
+
+@@@@@@@@@@ AutoEncoder Epoch: 392 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418574537349
+
+@@@@@@@@@@ AutoEncoder Epoch: 393 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420275006871
+
+@@@@@@@@@@ AutoEncoder Epoch: 394 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0420229057552
+
+@@@@@@@@@@ AutoEncoder Epoch: 395 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419797691837
+
+@@@@@@@@@@ AutoEncoder Epoch: 396 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0418591538108
+
+@@@@@@@@@@ AutoEncoder Epoch: 397 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0417480748605
+
+@@@@@@@@@@ AutoEncoder Epoch: 398 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0419989269318
+
+@@@@@@@@@@ AutoEncoder Epoch: 399 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.0417692156844
+
+@@@@@@@@@@ AutoEncoder Epoch: 400 % 400 @@@@@@@@@@@@
+Train vae_loss 0.040
+val vae_loss 0.042
+Total valid loss 0.041882896002
+Best validation Loss: 0.0416871151872
+**** Training Begins ****
+**** Epoch 0/400 ****
+
+**** Epcoch 0/400 Done ****
+
+=== Evaluating Model ===
+Train disc_loss 0.696
+Average disc value for human and machine on training set: 0.506, 0.508
+====Validate Discriminator====
+val disc_loss 0.693
+Total valid loss 0.693471638883
+Human-generated: 7320.0, Successful Predictions: 7320.0, Acc: 1.00
+Machine-generated: 7320.0, Successful Predictions: 0.0, Acc: 0.00
+Total: 14640.0, Successful Predictions: 7320.0, Acc: 0.50
+D(x) on Human generated: 0.51
+D(G(z)) on Machine generated: 0.51
+====Validate Generator====
+val gen_loss 0.679 mean_dist -0.000
+Total valid loss 0.679324018955

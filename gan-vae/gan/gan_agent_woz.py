@@ -14,6 +14,10 @@ from laed.dataset.corpora import PAD, EOS, EOT, BOS
 from laed.utils import Pack, INT, FLOAT, LONG, cast_type
 from utils import BCELoss_double, cal_accuracy
 import torch.nn.functional as F
+"""
+This file is for the agent of GAN code.
+"""
+
 
 logger = logging.getLogger()
 
@@ -152,8 +156,6 @@ class GanRnnAgent(nn.Module):
         elif self.config.state_type=='table':
             real_state_rep = self.np2var(batch_feed['state_table'], FLOAT)
         return real_state_rep, action_data_feed
-    
-
 
 class WGanAgent(GanRnnAgent):
     def __init__(self, corpus, config, action2name):
@@ -181,8 +183,6 @@ class WGanAgent(GanRnnAgent):
         disc_loss = Pack(disc_loss=disc_loss)
         disc_acc = np.array([-real_disc_loss.item(), fake_disc_loss.item()])
         return disc_loss, disc_acc
-
-
 
 class GanAgent_SAT(GanRnnAgent):
     def __init__(self, corpus, config, action2name):

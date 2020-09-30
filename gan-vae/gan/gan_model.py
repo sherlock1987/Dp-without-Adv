@@ -15,8 +15,6 @@ from laed.dataset.corpora import PAD, EOS, EOT, BOS
 from laed.utils import INT, FLOAT, LONG, cast_type, Pack
 from gan.torch_utils import GumbelConnector, LayerNorm
 
-
-
 class BaseModel(nn.Module):
     def __init__(self, config):
         super(BaseModel, self).__init__()
@@ -94,9 +92,8 @@ class Generator(BaseModel):
         action_in_size = config.action_noise_dim
         state_out_size = config.ctx_cell_size
         action_out_size = config.action_num
-        
-
-
+        # from high -> low -> high
+        # 128 ->128 ->96 ->96 -> 128 -> 128
         self.state_model = nn.Sequential(
             # original: 5 block + 1 linear
             nn.Linear(state_in_size, 128),
@@ -118,8 +115,6 @@ class Generator(BaseModel):
             nn.Linear(96, 96),
             # nn.BatchNorm1d(96),
             nn.ReLU(True),
-
-
             # nn.Linear(96, 96),
             # nn.BatchNorm1d(96),
             # nn.ReLU(True),
@@ -134,10 +129,10 @@ class Generator(BaseModel):
             # LayerNorm(128),
             nn.ReLU(True),
             # nn.Dropout(config.dropout),
-
             nn.Linear(128, state_out_size),
         )
         # '''
+        # 128 -> 128
         self.common_model = nn.Sequential(
             nn.Linear(state_in_size, state_in_size),
             # nn.BatchNorm1d(state_in_size),
@@ -217,6 +212,10 @@ class Generator(BaseModel):
         '''
 
         # state and action share one common MLP
+        """
+        noise -> state_action_MLP -> state_MLP sigmoid? 
+                                  -> action_MLP gumbel_softmax.
+        """
         state_action_pair = self.common_model(self.cast_gpu(s_z))
         # state_rep = torch.tanh(self.state_model(state_action_pair))
         state_rep = torch.sigmoid(self.state_model(state_action_pair))
@@ -225,9 +224,6 @@ class Generator(BaseModel):
         action_rep = self.gumbel_connector.forward_ST(action_rep_2, self.config.gumbel_temp)
         # '''
         return state_rep, action_rep
-
-
-
 
 class Discriminator(BaseModel):
     def __init__(self, config):
@@ -245,6 +241,7 @@ class Discriminator(BaseModel):
             # nn.Dropout(0.5),
 
             # nn.Linear(self.state_in_size/2, 64),
+            # 100/2 + 300/2
             nn.Linear(self.state_in_size/2 + self.action_in_size/2, 64),
             # nn.BatchNorm1d(64),
             nn.LeakyReLU(0.2, inplace=True),
@@ -278,13 +275,21 @@ class Discriminator(BaseModel):
         self.noise_input *= 0.995
 
     def forward(self, state, action):
-        s_z = self.cast_gpu(Variable(torch.Tensor(np.random.normal(0, self.noise_input, state.shape))))
-        s_a = self.cast_gpu(Variable(torch.Tensor(np.random.normal(0, self.noise_input, action.shape))))
+        """
+        state  -> state/2
+                                cat     (state/2 ; action/2) -> 64
+        action -> action/2
+
+        return a score between 0 ~ 1
+        """
+        # s_z = self.cast_gpu(Variable(torch.Tensor(np.random.normal(0, self.noise_input, state.shape))))
+        # s_a = self.cast_gpu(Variable(torch.Tensor(np.random.normal(0, self.noise_input, action.shape))))
         state_1 = self.state_rep(self.cast_gpu(state))
         action_1 = self.action_rep(self.cast_gpu(action))
         # print(state.shape, action_1.shape)
         state_action = torch.cat([state_1, action_1], 1)
         validity = torch.sigmoid(self.model(state_action))
+        # make this stuff between this two value
         validity = torch.clamp(validity, 1e-6, 1-1e-6)
         return validity
     
@@ -294,7 +299,6 @@ class Discriminator(BaseModel):
         state_action = torch.cat([state_1, action_1], 1)
         validity = self.model(state_action)
         return validity
-
 
 class ContEncoder(BaseModel):
     def __init__(self, corpus, config):

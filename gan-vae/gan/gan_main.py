@@ -14,6 +14,11 @@ from utils import print_accuracy, save_model, save_model_woz, save_model_vae, lo
 from gan_validate import disc_validate, vae_validate, gen_validate, policy_validate_for_human, LossManager, disc_validate_for_tsne, disc_train_history, disc_validate_for_tsne_single_input, disc_validate_for_tsne_state_action_embed
 logger = logging.getLogger()
 
+"""
+1. GAN training, stop when meet the patience, that's it.
+2. VAE training
+"""
+
 def train_disc_with_history(agent, history_pool, batch, sample_shape, disc_optimizer, batch_cnt):
     for _ in range(1):
         disc_optimizer.zero_grad()
@@ -25,6 +30,7 @@ def train_disc_with_history(agent, history_pool, batch, sample_shape, disc_optim
         agent.discriminator.backward(batch_cnt, disc_loss)
         disc_optimizer.step()
 
+# this is for GAN training
 def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, evaluator, pred_list=[], gen_sampled_list=[]):
     patience = 10  # wait for at least 10 epoch before stop
     valid_loss_threshold = np.inf
@@ -58,8 +64,9 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
         # logger.info("Train {}/{}".format(done_epoch, config.max_epoch))
         while True:
             if config.domain=='multiwoz' and vae_flag:
+                # VAE is also training.
                 agent.vae.eval()
-            batch_count_inside+=1
+            batch_count_inside += 1
             batch = train_feed.next_batch()
             sample_shape = config.batch_size, config.state_noise_dim, config.action_noise_dim
             if batch is None:
@@ -71,6 +78,7 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
                 ''''''''''''''' Training discriminator '''''''''''''''
             for _ in range(config.gan_ratio):
                 if config.gan_type=='wgan':
+                    # this is going to skip these stuff.
                     for p in agent.discriminator.parameters():
                         p.data.clamp_(-0.03, 0.03)
                 disc_optimizer.zero_grad()
@@ -78,6 +86,7 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
                 disc_loss, train_acc = agent.disc_train(sample_shape, batch)                
                 agent.discriminator.backward(batch_cnt, disc_loss)
                 disc_optimizer.step()
+                # lazy movement, he train this D in second time, amazing....
                 train_disc_with_history(agent, history_pool, batch, sample_shape, disc_optimizer, batch_cnt)
                 
             ''''''''''''''' Training generator '''''''''''''''
@@ -85,14 +94,13 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
             generator_optimizer.zero_grad()
             if config.domain=='multiwoz' and vae_flag:
                 generator_vae_optimizer.zero_grad()
+            # get the fake [state, action], and loss from this function
             gen_loss, fake_s_a = agent.gen_train(sample_shape)
             agent.generator.backward(batch_cnt, gen_loss)
             # generator_vae_optimizer.step()            
             generator_optimizer.step()
             history_pool.add(fake_s_a)
             # '''
-
-        
             batch_cnt += 1
             train_loss.add_loss(disc_loss)
             # train_loss.add_loss(disc_loss_self)
@@ -105,7 +113,6 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
             #     logger.info("====Validate Generator====")
             #     valid_loss, gen_samples = gen_validate(agent,valid_feed, config, sample_shape, done_epoch, batch_cnt)
             #     agent.train()
-            
             if batch_count_inside == 0 and done_epoch % 1==0:
                 logger.info("\n**** Epcoch {}/{} Done ****".format(done_epoch, config.max_epoch))
                 logger.info("\n=== Evaluating Model ===")
@@ -117,6 +124,7 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
                 logger.info("====Validate Discriminator====")
                 valid_loss_disc = disc_validate(agent,valid_feed, config, sample_shape, batch_cnt)
                 logger.info("====Validate Generator====")
+                # validation is from score of D.
                 valid_loss, gen_samples = gen_validate(agent,valid_feed, config, sample_shape, done_epoch, batch_cnt)
                 if len(gen_samples)>0:
                     gen_sampled_list.append([done_epoch, gen_samples])
@@ -169,7 +177,6 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
                     logger.info("Best validation Epoch on Machine data: {}".format(epoch_valid))
                     logger.info("Best validation Loss: {}".format(best_valid_loss))                    
                     logger.info("Best validation value on Machine data: {}, {}".format(disc_on_random_data[0], disc_on_random_data[1]))
-                    
                     return
 
                 # exit eval model
@@ -178,7 +185,7 @@ def gan_train(agent, machine_data, train_feed, valid_feed, test_feed, config, ev
                 
         done_epoch += 1   
         
-
+# This is for VAE training
 def vae_train(agent, train_feed, valid_feed, test_feed, config):
     patience = 10  # wait for at least 10 epoch before stop
     valid_loss_threshold = np.inf
@@ -205,6 +212,7 @@ def vae_train(agent, train_feed, valid_feed, test_feed, config):
             if batch is None:
                 break
             vae_optimizer.zero_grad()
+            # the batch has been processed into the 4 parts, 'state_onehot', 'state_convlab': 392, 'action_id_binary', 'action_id'
             vae_loss= agent.vae_train(batch)
             agent.vae.backward(batch_cnt, vae_loss)
             vae_optimizer.step()
@@ -216,7 +224,7 @@ def vae_train(agent, train_feed, valid_feed, test_feed, config):
             if batch_count_inside==0:
                 logger.info("\n@@@@@@@@@@ AutoEncoder Epoch: {} % {} @@@@@@@@@@@@".format(done_epoch, config.max_epoch))
                 logger.info(train_loss.pprint("Train"))
-                valid_loss = vae_validate(agent,valid_feed, config, batch_cnt)
+                valid_loss = vae_validate(agent, valid_feed, config, batch_cnt)
                 # update early stopping stats
                 if valid_loss < best_valid_loss:
                     if valid_loss <= valid_loss_threshold * config.improve_threshold:

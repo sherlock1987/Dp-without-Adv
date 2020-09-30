@@ -3,6 +3,7 @@ This repository is for gan-vae reward function training of paper "Guided Dialog 
 ### VAE-GAN training: 
 ```sh
 python -u mwoz_gan_vae.py --max_epoch 400 --data_dir ./data/multiwoz --init_lr 0.0005 --vae_loss bce --l2_lambda 0.000001 --early_stop True --round_for_disc False --gan_type wgan --op rmsprop --gan_ratio 3 
+--max_epoch 400 --data_dir ./data/multiwoz --init_lr 0.0005 --vae_loss bce --l2_lambda 0.000001 --early_stop True --round_for_disc False --gan_type wgan --op rmsprop --gan_ratio 3 
 
 ```
 Requirements: pytorch-1.0, cuda-9.2, nltk-3.2.5, Python-2.7

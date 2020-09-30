@@ -85,7 +85,6 @@ net_arg.add_argument('--utt_type', type=str, default='attn_rnn')
 net_arg.add_argument('--utt_cell_size', type=int, default=100)
 net_arg.add_argument('--ctx_cell_size', type=int, default=100)
 net_arg.add_argument('--dec_cell_size', type=int, default=100)
-
 net_arg.add_argument('--enc_cell_size', type=int, default=100)
 
 net_arg.add_argument('--bi_ctx_cell', type=str2bool, default=False)
@@ -218,7 +217,6 @@ def main(config):
     #         print("Training stopped by keyboard.")
     # print("AutoEncoder Training Done ! ")
     # load_model_vae(model, config)
-    
     
     # this is a pretrained vae model, you can load it to the current model. TODO: move path todata_args
     path='./logs/2019-09-06T10:50:18.034181-mwoz_gan_vae.py'

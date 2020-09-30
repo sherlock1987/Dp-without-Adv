@@ -7,11 +7,13 @@ import json
 from laed.utils import get_tokenize, get_chat_tokenize, missingdict, Pack
 import logging
 import os
+import sys
 import itertools
 from collections import defaultdict
 import copy
-# sys.path.append('./a3c/src')
-import a3c.src.deep_dialog.dialog_config as a3c_config
+# /home/raleigh/anaconda3/envs/convlab/lib/python3.6/site-packages/ray/rllib/agents/a3c
+sys.path.append('./a3c/src')
+# import a3c.src.deep_dialog.dialog_config as a3c_config
 
 PAD = '<pad>'
 UNK = '<unk>'

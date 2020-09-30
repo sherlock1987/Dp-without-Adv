@@ -16,6 +16,10 @@ from laed.utils import Pack, INT, FLOAT, LONG, cast_type
 from utils import BCELoss_double, cal_accuracy
 import torch.nn.functional as F
 import random
+"""
+1. All of the agent file is over here.
+"""
+
 
 logger = logging.getLogger()
 
@@ -190,8 +194,6 @@ class GanRnnAgent(nn.Module):
         elif self.config.state_type=='table':
             real_state_rep = self.np2var(batch_feed['state_table'], FLOAT)
         return real_state_rep, action_data_feed
-    
-
 
 class WGanAgent(GanRnnAgent):
     def __init__(self, corpus, config, action2name):
@@ -671,7 +673,7 @@ class GanAgent_VAE_State(GanAgent_AutoEncoder_State):
         return mean
     
 
-   
+# this is the model of training
 class WGanAgent_VAE_State(GanAgent_AutoEncoder_State):
     # only state is fed to VAE, action is onehot with 300 dims
     def __init__(self, corpus, config, action2name):
